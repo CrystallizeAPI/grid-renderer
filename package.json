@@ -5,16 +5,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "<git_repo_url>"
+    "url": "git@github.com:CrystallizeAPI/grid-renderer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CrystallizeAPI/grid-renderer/issues"
   },
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack"
   },
-  "dependencies": {
-    "react": "^16.9.0",
-    "webpack": "^4.39.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -24,6 +24,8 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
+    "react": "^16.9.0",
+    "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
   },
   "peerDependencies": {
