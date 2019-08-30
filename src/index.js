@@ -1,7 +1,2 @@
-import React from 'react';
-
-const GridRenderer = () => {
-  return <div />;
-};
-
-export default GridRenderer;
+export { default as Grid } from './grid/index';
+export { default as Cell } from './cell/index';
