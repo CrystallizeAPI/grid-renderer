@@ -1,5 +1,5 @@
 import React from 'react';
-import { CellWrapper, Img, Footer, ItemName } from './styles';
+import { CellWrapper, Img, ImageWrapper, ItemName } from './styles';
 
 const Cell = ({ colspan, rowspan, cell }) => {
   const defaultVariant = cell.variants
@@ -9,7 +9,9 @@ const Cell = ({ colspan, rowspan, cell }) => {
 
   return (
     <CellWrapper colspan={colspan} rowspan={rowspan}>
-      <Img src={image && image.url} alt={image && image.alt} />
+      <ImageWrapper>
+        <Img src={image && image.url} alt={image && image.alt} />
+      </ImageWrapper>
       <ItemName>{cell.name}</ItemName>
     </CellWrapper>
   );

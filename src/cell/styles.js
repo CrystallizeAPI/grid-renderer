@@ -9,25 +9,22 @@ export const CellWrapper = styled.div.attrs({ className: cellClassName })`
   grid-column: span ${props => props.colspan};
   grid-row: span ${props => props.rowspan};
   background: white;
-  min-height: 18rem;
+  padding: 15px;
 `;
 
 export const Img = styled(Image)`
-  margin: 0 auto 10px;
+  max-width: 100%;
+  max-height: 100%;
+`;
+
+export const ImageWrapper = styled.div`
   display: flex;
-  height: 300px;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-
-  > img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    margin: 0 auto;
-  }
+  flex-grow: 1;
+  height: 80%;
 `;
+
 export const ItemName = styled.span`
   text-align: center;
 `;
