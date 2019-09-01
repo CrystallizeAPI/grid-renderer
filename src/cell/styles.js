@@ -9,20 +9,20 @@ export const CellWrapper = styled.div.attrs({ className: cellClassName })`
   grid-column: span ${props => props.colspan};
   grid-row: span ${props => props.rowspan};
   background: white;
-  padding: 15px;
+  padding: 1rem;
 `;
 
 export const Img = styled(Image)`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 80%;
+  max-height: 80%;
 `;
 
 export const ImageWrapper = styled.div`
   display: flex;
+  flex-grow: 1;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
-  height: 80%;
 `;
 
 export const ItemName = styled.span`
