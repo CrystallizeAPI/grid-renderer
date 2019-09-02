@@ -6,8 +6,8 @@ export const cellClassName = 'crystallize-grid-renderer-cell';
 export const CellWrapper = styled.div.attrs({ className: cellClassName })`
   display: flex;
   flex-direction: column;
-  grid-column: span ${props => props.colspan};
-  grid-row: span ${props => props.rowspan};
+  grid-column: span ${props => props.colSpan};
+  grid-row: span ${props => props.rowSpan};
   background: white;
 `;
 
