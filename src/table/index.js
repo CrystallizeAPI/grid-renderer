@@ -1,22 +1,26 @@
 import React from 'react';
-import Cell from '../cell';
 import { Table, Tbody, Tr, Td } from './styles';
+import TableCell from './table-cell';
 
-export default ({ rows }) => {
+export default ({ children, rows }) => {
   return (
     <Table>
       <Tbody>
-        {rows.map(row => {
-          return (
-            <Tr>
-              {row.columns.map(col => (
-                <Td rowSpan={col.layout.rowspan} colSpan={col.layout.colspan}>
-                  <Cell cell={col.item} />
-                </Td>
-              ))}
-            </Tr>
-          );
-        })}
+        {children
+          ? children({ rows, totalColSpan, totalRowSpan })
+          : rows.map(row => {
+              return (
+                <Tr>
+                  {row.columns.map(col => (
+                    <TableCell
+                      rowSpan={col.layout.rowspan}
+                      colSpan={col.layout.colspan}
+                      cell={col.item}
+                    />
+                  ))}
+                </Tr>
+              );
+            })}
       </Tbody>
     </Table>
   );
