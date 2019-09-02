@@ -6,19 +6,24 @@ import Table from './table';
 export { default as Grid } from './grid';
 export { default as Table } from './table';
 export { default as Cell } from './cell';
-export { default as TableCell } from './table-cell';
+export { default as TableCell } from './table/table-cell';
 
-const GridRenderer = ({ children, model, type = 'grid' }) => {
+const GridRenderer = ({ children, model, renderContent, type = 'grid' }) => {
   const { rows } = model;
   if (!rows.length) return null;
 
   const Component = type === 'table' ? Table : Grid;
-  return <Component rows={rows}>{children}</Component>;
+  return (
+    <Component rows={rows} renderContent={renderContent}>
+      {children}
+    </Component>
+  );
 };
 
 GridRenderer.propTypes = {
   children: PropTypes.func,
   model: PropTypes.object,
+  renderContent: PropTypes.func,
   type: PropTypes.string
 };
 

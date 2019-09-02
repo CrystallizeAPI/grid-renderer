@@ -14,7 +14,7 @@ const getTotalGridDimensions = rows => {
   );
 };
 
-const Grid = ({ children, rows }) => {
+const Grid = ({ children, renderContent, rows }) => {
   // Currently the data is only returned in a nested array of rows and
   // columns. To make use of CSS Grid we need a flat array of all of the
   // individual cells.
@@ -23,23 +23,23 @@ const Grid = ({ children, rows }) => {
   const { totalColSpan, totalRowSpan } = getTotalGridDimensions(rows);
 
   return (
-    <div>
-      <CssGrid
-        numberOfColumns={totalColSpan}
-        numberOfRows={totalRowSpan}
-        rows={rows}
-      >
-        {children
-          ? children({ cells })
-          : cells.map(cell => (
-              <Cell
-                colSpan={cell.layout.colspan}
-                rowSpan={cell.layout.rowspan}
-                cell={cell.item}
-              />
-            ))}
-      </CssGrid>
-    </div>
+    <CssGrid
+      numberOfColumns={totalColSpan}
+      numberOfRows={totalRowSpan}
+      rows={rows}
+    >
+      {children
+        ? children({ cells })
+        : cells.map(cell => (
+            <Cell
+              colSpan={cell.layout.colspan}
+              rowSpan={cell.layout.rowspan}
+              cell={cell.item}
+            >
+              {renderContent && renderContent(cell)}
+            </Cell>
+          ))}
+    </CssGrid>
   );
 };
 
