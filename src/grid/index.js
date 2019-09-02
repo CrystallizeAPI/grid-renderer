@@ -30,7 +30,7 @@ const Grid = ({ children, rows }) => {
         rows={rows}
       >
         {children
-          ? children({ cells, totalColSpan, totalRowSpan })
+          ? children({ cells })
           : cells.map(cell => (
               <Cell
                 colSpan={cell.layout.colspan}

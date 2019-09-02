@@ -7,7 +7,7 @@ export default ({ children, rows }) => {
     <Table>
       <Tbody>
         {children
-          ? children({ rows, totalColSpan, totalRowSpan })
+          ? children({ rows })
           : rows.map(row => {
               return (
                 <Tr>

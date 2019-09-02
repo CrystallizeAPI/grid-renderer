@@ -6,6 +6,7 @@ import Table from './table';
 export { default as Grid } from './grid';
 export { default as Table } from './table';
 export { default as Cell } from './cell';
+export { default as TableCell } from './table-cell';
 
 const GridRenderer = ({ children, model, type = 'grid' }) => {
   const { rows } = model;
