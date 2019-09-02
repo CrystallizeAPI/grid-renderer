@@ -9,7 +9,6 @@ export const CellWrapper = styled.div.attrs({ className: cellClassName })`
   grid-column: span ${props => props.colspan};
   grid-row: span ${props => props.rowspan};
   background: white;
-  padding: 1rem;
 `;
 
 export const Img = styled(Image)`
@@ -27,4 +26,7 @@ export const ImageWrapper = styled.div`
 
 export const ItemName = styled.span`
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 1rem;
 `;

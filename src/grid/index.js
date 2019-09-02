@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Cell from '../cell';
-import { GridWrapper } from './styles';
+import Table from '../table';
+import { CssGrid } from './styles';
 
 const getTotalGridDimensions = rows => {
   return rows[0].columns.reduce(
     (acc, col) => {
       return {
-        colspan: acc.colspan + col.layout.colspan,
-        rowspan: acc.rowspan + col.layout.rowspan
+        totalColSpan: acc.totalColSpan + col.layout.colspan,
+        totalRowSpan: acc.totalRowSpan + col.layout.rowspan
       };
     },
-    { colspan: 0, rowspan: 0 }
+    { totalColSpan: 0, totalRowSpan: 0 }
   );
 };
 
@@ -20,15 +21,19 @@ const Grid = ({ children, model }) => {
   const { rows } = model;
   if (!rows.length) return null;
 
-  const { colspan, rowspan } = getTotalGridDimensions(rows);
+  const { totalColSpan, totalRowSpan } = getTotalGridDimensions(rows);
   const columns = rows.map(row => row.columns);
   const cells = [].concat.apply([], columns);
 
   return (
     <div>
-      <GridWrapper numberOfColumns={colspan} numberOfRows={rowspan}>
+      <CssGrid
+        numberOfColumns={totalColSpan}
+        numberOfRows={totalRowSpan}
+        rows={rows}
+      >
         {children
-          ? children({ cells })
+          ? children({ cells, totalColSpan, totalRowSpan })
           : cells.map(cell => (
               <Cell
                 colspan={cell.layout.colspan}
@@ -36,14 +41,13 @@ const Grid = ({ children, model }) => {
                 cell={cell.item}
               />
             ))}
-      </GridWrapper>
+      </CssGrid>
     </div>
   );
 };
 
 Grid.propTypes = {
   model: PropTypes.object,
-  // type: PropTypes.oneOf(['cssGrid', 'table']),
   children: PropTypes.func
 };
 
