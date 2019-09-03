@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid renders correctly 1`] = `
+<styled.div
+  numberOfColumns={4}
+  numberOfRows={2}
+  rows={
+    Array [
+      Object {
+        "columns": Array [
+          Object {
+            "item": Object {
+              "name": "Item 1",
+            },
+            "layout": Object {
+              "colspan": 2,
+              "rowspan": 1,
+            },
+          },
+          Object {
+            "item": Object {
+              "name": "Item 2",
+            },
+            "layout": Object {
+              "colspan": 2,
+              "rowspan": 1,
+            },
+          },
+        ],
+      },
+      Object {
+        "columns": Array [
+          Object {
+            "item": Object {
+              "name": "Item 3",
+            },
+            "layout": Object {
+              "colspan": 4,
+              "rowspan": 1,
+            },
+          },
+        ],
+      },
+    ]
+  }
+>
+  <Cell
+    cell={
+      Object {
+        "item": Object {
+          "name": "Item 1",
+        },
+        "layout": Object {
+          "colspan": 2,
+          "rowspan": 1,
+        },
+      }
+    }
+    key="cell-0"
+  />
+  <Cell
+    cell={
+      Object {
+        "item": Object {
+          "name": "Item 2",
+        },
+        "layout": Object {
+          "colspan": 2,
+          "rowspan": 1,
+        },
+      }
+    }
+    key="cell-1"
+  />
+  <Cell
+    cell={
+      Object {
+        "item": Object {
+          "name": "Item 3",
+        },
+        "layout": Object {
+          "colspan": 4,
+          "rowspan": 1,
+        },
+      }
+    }
+    key="cell-2"
+  />
+</styled.div>
+`;

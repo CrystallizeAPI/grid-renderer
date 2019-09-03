@@ -11,8 +11,9 @@
     "url": "https://github.com/CrystallizeAPI/grid-renderer/issues"
   },
   "scripts": {
+    "build": "webpack",
     "start": "webpack --watch",
-    "build": "webpack"
+    "test": "jest"
   },
   "dependencies": {
     "@crystallize/react-image": "^3.0.3"
@@ -22,12 +23,20 @@
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.0",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
+    "jest": "^24.9.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.9.0",
     "styled-components": "^4.3.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
@@ -35,5 +44,13 @@
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.9.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

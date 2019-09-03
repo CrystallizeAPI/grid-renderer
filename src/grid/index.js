@@ -32,12 +32,8 @@ const Grid = ({ cellComponent, children, renderContent, rows }) => {
     >
       {children
         ? children({ cells })
-        : cells.map(cell => (
-            <CellComponent
-              colSpan={cell.layout.colspan}
-              rowSpan={cell.layout.rowspan}
-              cell={cell.item}
-            >
+        : cells.map((cell, i) => (
+            <CellComponent key={`cell-${i}`} cell={cell}>
               {renderContent && renderContent(cell)}
             </CellComponent>
           ))}
