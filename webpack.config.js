@@ -1,27 +1,29 @@
-var path = require("path");
+var path = require('path');
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    react: './src/react/index.js'
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "index.js",
-    libraryTarget: "commonjs2"
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname, 'src'),
         exclude: /(node_modules|dist)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/env"]
+            presets: ['@babel/env']
           }
         }
       }
     ]
   },
   externals: {
-    react: "commonjs react"
+    react: 'commonjs react'
   }
 };
