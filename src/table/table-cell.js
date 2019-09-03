@@ -2,9 +2,10 @@ import React from 'react';
 import Cell from '../cell';
 import { Td } from './styles';
 
-const TableCell = ({ cell, children, rowSpan, colSpan }) => {
+const TableCell = ({ cell, children }) => {
+  const { layout } = cell;
   return (
-    <Td rowSpan={rowSpan} colSpan={colSpan}>
+    <Td rowSpan={layout.rowspan} colSpan={layout.colspan}>
       {children ? children : <Cell cell={cell} />}
     </Td>
   );

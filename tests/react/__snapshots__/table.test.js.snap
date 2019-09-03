@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table renders correctly 1`] = `
+<styled.table>
+  <styled.tbody>
+    <styled.tr
+      key="row-0"
+    >
+      <TableCell
+        cell={
+          Object {
+            "item": Object {
+              "name": "Item 1",
+            },
+            "layout": Object {
+              "colspan": 2,
+              "rowspan": 1,
+            },
+          }
+        }
+        key="cell-0-0"
+      />
+      <TableCell
+        cell={
+          Object {
+            "item": Object {
+              "name": "Item 2",
+            },
+            "layout": Object {
+              "colspan": 2,
+              "rowspan": 1,
+            },
+          }
+        }
+        key="cell-0-1"
+      />
+    </styled.tr>
+    <styled.tr
+      key="row-1"
+    >
+      <TableCell
+        cell={
+          Object {
+            "item": Object {
+              "name": "Item 3",
+            },
+            "layout": Object {
+              "colspan": 4,
+              "rowspan": 1,
+            },
+          }
+        }
+        key="cell-1-0"
+      />
+    </styled.tr>
+  </styled.tbody>
+</styled.table>
+`;

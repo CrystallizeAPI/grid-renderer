@@ -2,21 +2,21 @@ import React from 'react';
 import { Table, Tbody, Tr, Td } from './styles';
 import TableCell from './table-cell';
 
-export default ({ children, rows }) => {
+export default ({ cellComponent, children, renderContent, rows }) => {
+  const CellComponent = cellComponent || TableCell;
+
   return (
     <Table>
       <Tbody>
         {children
           ? children({ rows })
-          : rows.map(row => {
+          : rows.map((row, i) => {
               return (
-                <Tr>
-                  {row.columns.map(col => (
-                    <TableCell
-                      rowSpan={col.layout.rowspan}
-                      colSpan={col.layout.colspan}
-                      cell={col.item}
-                    />
+                <Tr key={`row-${i}`}>
+                  {row.columns.map((col, j) => (
+                    <CellComponent key={`cell-${i}-${j}`} cell={col}>
+                      {renderContent && renderContent(col)}
+                    </CellComponent>
                   ))}
                 </Tr>
               );
