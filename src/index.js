@@ -31,9 +31,9 @@ const GridRenderer = ({
 };
 
 GridRenderer.propTypes = {
-  cellComponent: PropTypes.element,
+  cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.func,
-  model: PropTypes.object,
+  model: PropTypes.object.isRequired,
   renderContent: PropTypes.func,
   type: PropTypes.string
 };

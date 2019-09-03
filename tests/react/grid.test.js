@@ -1,13 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Grid from '../../src/grid';
-import { rows } from '../utils';
+import { CustomCellComponent, model } from '../utils';
 
-const CustomCellComponent = ({ cell }) => (
-  <div className="custom-cell">
-    <h1>{cell.item.name}</h1>
-  </div>
-);
+const { rows } = model;
 
 describe('Grid', () => {
   it('renders correctly', () => {
