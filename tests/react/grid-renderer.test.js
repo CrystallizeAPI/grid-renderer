@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GridRenderer from '../../src';
-import { CustomCellComponent, model } from '../utils';
+import GridRenderer from '../../src/react';
+import { CustomCellComponent, model } from './utils';
 
 describe('GridRenderer', () => {
   it('renders a grid correctly', () => {

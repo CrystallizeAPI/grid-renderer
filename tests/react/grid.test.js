@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Grid from '../../src/grid';
-import { CustomCellComponent, model } from '../utils';
+import Grid from '../../src/react/grid';
+import { CustomCellComponent, model } from './utils';
 
 const { rows } = model;
 

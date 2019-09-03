@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Table from '../../src/table';
-import { CustomCellComponent, model } from '../utils';
+import Table from '../../src/react/table';
+import { CustomCellComponent, model } from './utils';
 
 const { rows } = model;
 
