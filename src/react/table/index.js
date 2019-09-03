@@ -7,7 +7,7 @@ export default ({ cellComponent, children, renderContent, rows }) => {
 
   return (
     <Table>
-      <Tbody>
+      <tbody>
         {children
           ? children({ rows })
           : rows.map((row, i) => {
@@ -21,7 +21,7 @@ export default ({ cellComponent, children, renderContent, rows }) => {
                 </Tr>
               );
             })}
-      </Tbody>
+      </tbody>
     </Table>
   );
 };

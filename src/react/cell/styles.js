@@ -12,8 +12,8 @@ export const CellWrapper = styled.div.attrs({ className: cellClassName })`
 `;
 
 export const Img = styled(Image)`
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 200px;
+  max-height: 200px;
 `;
 
 export const ImageWrapper = styled.div`
