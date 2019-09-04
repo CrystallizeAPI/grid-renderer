@@ -2,8 +2,6 @@
 
 exports[`Grid renders correctly 1`] = `
 <styled.div
-  numberOfColumns={4}
-  numberOfRows={2}
   rows={
     Array [
       Object {

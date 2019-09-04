@@ -41,6 +41,7 @@ exports[`GridRenderer renders a grid correctly 1`] = `
       },
     ]
   }
+  totalColSpan={4}
 />
 `;
 
@@ -85,5 +86,6 @@ exports[`GridRenderer renders a table correctly 1`] = `
       },
     ]
   }
+  totalColSpan={4}
 />
 `;
