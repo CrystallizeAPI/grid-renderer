@@ -7,8 +7,7 @@ const Grid = ({
   children,
   renderContent,
   rows,
-  totalColSpan,
-  totalRowSpan
+  totalColSpan
 }) => {
   // Currently the data is only returned in a nested array of rows and
   // columns. To make use of CSS Grid we need a flat array of all of the
@@ -18,11 +17,7 @@ const Grid = ({
   const CellComponent = cellComponent || Cell;
 
   return (
-    <CssGrid
-      numberOfColumns={totalColSpan}
-      numberOfRows={totalRowSpan}
-      rows={rows}
-    >
+    <CssGrid totalColSpan={totalColSpan} rows={rows}>
       {children
         ? children({ cells })
         : cells.map((cell, i) => (
