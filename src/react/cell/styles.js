@@ -1,19 +1,18 @@
 import styled from 'styled-components';
 import Image from '@crystallize/react-image';
 
-export const cellClassName = 'crystallize-grid-renderer-cell';
-
-export const CellWrapper = styled.div.attrs({ className: cellClassName })`
+export const CellWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   grid-column: span ${props => props.colSpan};
   grid-row: span ${props => props.rowSpan};
   background: white;
 `;
 
 export const Img = styled(Image)`
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 50%;
+  max-height: 50%;
 `;
 
 export const ImageWrapper = styled.div`
@@ -24,9 +23,10 @@ export const ImageWrapper = styled.div`
   justify-content: center;
 `;
 
-export const ItemName = styled.span`
+export const ItemName = styled.h2`
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 1rem;
+  margin: 0;
 `;
