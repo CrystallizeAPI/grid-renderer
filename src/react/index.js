@@ -8,6 +8,18 @@ export { default as Table } from './table';
 export { default as Cell } from './cell';
 export { default as TableCell } from './table/table-cell';
 
+const getTotalGridDimensions = rows => {
+  const totalColSpan = rows[0].columns.reduce(
+    (acc, col) => acc + col.layout.colspan,
+    0
+  );
+  const totalRowSpan = rows.reduce(
+    (acc, row) => acc + row.columns[0].layout.rowspan
+  );
+
+  return { totalColSpan, totalRowSpan };
+};
+
 const GridRenderer = ({
   cellComponent,
   children,
@@ -18,12 +30,16 @@ const GridRenderer = ({
   const { rows } = model;
   if (!rows.length) return null;
 
+  const { totalColSpan, totalRowSpan } = getTotalGridDimensions(rows);
+
   const Component = type === 'table' ? Table : Grid;
   return (
     <Component
       cellComponent={cellComponent}
       renderContent={renderContent}
       rows={rows}
+      totalColSpan={totalColSpan}
+      totalRowSpan={totalRowSpan}
     >
       {children}
     </Component>

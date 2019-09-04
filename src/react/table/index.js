@@ -2,7 +2,13 @@ import React from 'react';
 import { TableWrapper, Table, Tbody, Tr, Td } from './styles';
 import TableCell from './table-cell';
 
-export default ({ cellComponent, children, renderContent, rows }) => {
+export default ({
+  cellComponent,
+  children,
+  renderContent,
+  rows,
+  totalColSpan
+}) => {
   const CellComponent = cellComponent || TableCell;
 
   return (
@@ -15,7 +21,11 @@ export default ({ cellComponent, children, renderContent, rows }) => {
                 return (
                   <Tr key={`row-${i}`}>
                     {row.columns.map((col, j) => (
-                      <CellComponent key={`cell-${i}-${j}`} cell={col}>
+                      <CellComponent
+                        key={`cell-${i}-${j}`}
+                        cell={col}
+                        totalColSpan={totalColSpan}
+                      >
                         {renderContent && renderContent(col)}
                       </CellComponent>
                     ))}

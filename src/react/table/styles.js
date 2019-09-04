@@ -30,7 +30,7 @@ export const Tr = styled.tr`
 
 export const Td = styled.td`
   position: relative;
-  width: 25%;
+  width: ${props => 100 / props.totalColSpan}%;
   vertical-align: top;
   background: white;
 `;
