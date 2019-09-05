@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Grid from './grid';
 import Table from './table';
 
+export { default as Grid } from './grid';
+export { default as Table } from './table';
 export { default as Cell } from './cell';
 export { default as TableCell } from './table/table-cell';
 
@@ -27,23 +29,44 @@ const GridRenderer = ({
 
   const { totalColSpan } = getTotalGridDimensions(rows);
 
-  const Component = type === 'table' ? Table : Grid;
+  if (type === 'table') {
+    return (
+      <Table
+        cellComponent={cellComponent}
+        renderContent={renderContent}
+        rows={rows}
+        totalColSpan={totalColSpan}
+      >
+        {children}
+      </Table>
+    );
+  }
+
+  // Currently the data is only returned in a nested array of rows and
+  // columns. To make use of CSS Grid we need a flat array of all of the
+  // individual cells.
+  const columns = rows.map(row => row.columns);
+  const cells = [].concat.apply([], columns);
+
   return (
-    <Component
+    <Grid
       cellComponent={cellComponent}
+      cells={cells}
       renderContent={renderContent}
-      rows={rows}
       totalColSpan={totalColSpan}
     >
       {children}
-    </Component>
+    </Grid>
   );
 };
 
 GridRenderer.propTypes = {
   cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.func,
-  model: PropTypes.object.isRequired,
+  model: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object)
+  ]).isRequired,
   renderContent: PropTypes.func,
   type: PropTypes.string
 };

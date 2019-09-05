@@ -2,42 +2,34 @@
 
 exports[`GridRenderer renders a grid correctly 1`] = `
 <Grid
-  rows={
+  cells={
     Array [
       Object {
-        "columns": Array [
-          Object {
-            "item": Object {
-              "name": "Item 1",
-            },
-            "layout": Object {
-              "colspan": 2,
-              "rowspan": 1,
-            },
-          },
-          Object {
-            "item": Object {
-              "name": "Item 2",
-            },
-            "layout": Object {
-              "colspan": 2,
-              "rowspan": 1,
-            },
-          },
-        ],
+        "item": Object {
+          "name": "Item 1",
+        },
+        "layout": Object {
+          "colspan": 2,
+          "rowspan": 1,
+        },
       },
       Object {
-        "columns": Array [
-          Object {
-            "item": Object {
-              "name": "Item 3",
-            },
-            "layout": Object {
-              "colspan": 4,
-              "rowspan": 1,
-            },
-          },
-        ],
+        "item": Object {
+          "name": "Item 2",
+        },
+        "layout": Object {
+          "colspan": 2,
+          "rowspan": 1,
+        },
+      },
+      Object {
+        "item": Object {
+          "name": "Item 3",
+        },
+        "layout": Object {
+          "colspan": 4,
+          "rowspan": 1,
+        },
       },
     ]
   }
@@ -46,7 +38,7 @@ exports[`GridRenderer renders a grid correctly 1`] = `
 `;
 
 exports[`GridRenderer renders a table correctly 1`] = `
-<_default
+<Table
   rows={
     Array [
       Object {

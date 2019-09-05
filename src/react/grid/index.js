@@ -1,23 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Cell from '../cell';
 import { CssGrid } from './styles';
 
 const Grid = ({
   cellComponent,
+  cells,
   children,
   renderContent,
-  rows,
   totalColSpan
 }) => {
-  // Currently the data is only returned in a nested array of rows and
-  // columns. To make use of CSS Grid we need a flat array of all of the
-  // individual cells.
-  const columns = rows.map(row => row.columns);
-  const cells = [].concat.apply([], columns);
   const CellComponent = cellComponent || Cell;
 
   return (
-    <CssGrid totalColSpan={totalColSpan} rows={rows}>
+    <CssGrid totalColSpan={totalColSpan}>
       {children
         ? children({ cells })
         : cells.map((cell, i) => (
@@ -27,6 +23,14 @@ const Grid = ({
           ))}
     </CssGrid>
   );
+};
+
+Grid.propTypes = {
+  cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  cells: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func,
+  renderContent: PropTypes.func,
+  totalColSpan: PropTypes.number
 };
 
 export default Grid;

@@ -40,6 +40,11 @@ export const model = {
   ]
 };
 
+export const toCells = rows => {
+  const columns = rows.map(row => row.columns);
+  return [].concat.apply([], columns);
+};
+
 export const CustomCellComponent = ({ cell }) => (
   <div className="custom-cell">
     <h1>{cell.item.name}</h1>

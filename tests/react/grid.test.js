@@ -1,31 +1,32 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Grid from '../../src/react/grid';
-import { CustomCellComponent, model } from './utils';
+import { CustomCellComponent, model, toCells } from './utils';
 
 const { rows } = model;
+const cells = toCells(rows);
 
 describe('Grid', () => {
   it('renders correctly', () => {
-    const wrapper = shallow(<Grid rows={rows} />);
+    const wrapper = shallow(<Grid cells={cells} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders a Cell component for each cell', () => {
-    const wrapper = shallow(<Grid rows={rows} />);
-    const cells = wrapper.find('Cell');
-    expect(cells).toHaveLength(3);
-    expect(cells.first().prop('cell')).toEqual(rows[0].columns[0]);
+    const wrapper = shallow(<Grid cells={cells} />);
+    const cellComponents = wrapper.find('Cell');
+    expect(cellComponents).toHaveLength(3);
+    expect(cellComponents.first().prop('cell')).toEqual(rows[0].columns[0]);
   });
 
   describe('when the `cellComponent` prop is given', () => {
     it('renders the custom component for each cell', () => {
       const wrapper = shallow(
-        <Grid cellComponent={CustomCellComponent} rows={rows} />
+        <Grid cellComponent={CustomCellComponent} cells={cells} />
       );
-      const cells = wrapper.find(CustomCellComponent);
-      expect(cells).toHaveLength(3);
-      expect(cells.first().prop('cell')).toEqual(rows[0].columns[0]);
+      const cellComponents = wrapper.find(CustomCellComponent);
+      expect(cellComponents).toHaveLength(3);
+      expect(cellComponents.first().prop('cell')).toEqual(rows[0].columns[0]);
     });
   });
 
@@ -35,7 +36,7 @@ describe('Grid', () => {
         <CustomCellComponent cell={cell} />
       ));
       const wrapper = shallow(
-        <Grid renderContent={renderContent} rows={rows} />
+        <Grid renderContent={renderContent} cells={cells} />
       );
       expect(renderContent.mock.calls).toHaveLength(3);
       expect(wrapper.find(CustomCellComponent)).toHaveLength(3);

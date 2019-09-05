@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Image from '@crystallize/react-image';
 
+import { responsive } from '../styles';
+
 export const CellWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,6 +10,11 @@ export const CellWrapper = styled.div`
   grid-column: span ${props => props.colSpan};
   grid-row: span ${props => props.rowSpan};
   background: white;
+
+  @media screen and (max-width: ${responsive.sm}px) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 `;
 
 export const Img = styled(Image)`

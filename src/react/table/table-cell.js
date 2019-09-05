@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Cell from '../cell';
 import { Td, TableCellWrapper } from './styles';
 
@@ -15,6 +16,12 @@ const TableCell = ({ cell, children, totalColSpan }) => {
       </TableCellWrapper>
     </Td>
   );
+};
+
+TableCell.propTypes = {
+  cell: PropTypes.object,
+  children: PropTypes.any,
+  totalColSpan: PropTypes.number
 };
 
 export default TableCell;

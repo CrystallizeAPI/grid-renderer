@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { responsive } from '../styles';
 
 export const TableWrapper = styled.div`
   margin: -1rem;
 `;
 
-export const Table = styled.table`
+export const StyledTable = styled.table`
   width: 100%;
   table-layout: fixed;
   border-spacing: 1rem;
@@ -13,17 +14,13 @@ export const Table = styled.table`
 
 export const Tr = styled.tr`
   width: 100%;
-  height: 300px;
+  height: 300px;d
 
-  @media screen and (max-width: 1280px) {
-    height: 200px;
-  }
-
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: ${responsive.sm}px) {
     height: 150px;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: ${responsive.xs}px) {
     height: 100px;
   }
 `;

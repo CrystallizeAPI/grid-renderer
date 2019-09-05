@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { responsive } from '../styles';
 
 export const gridClassName = 'crystallize-grid-renderer-grid';
 
@@ -8,15 +9,11 @@ export const CssGrid = styled.div.attrs({ className: gridClassName })`
   grid-auto-rows: 300px;
   grid-gap: 1rem;
 
-  @media screen and (max-width: 1280px) {
-    grid-auto-rows: 200px;
+  @media screen and (max-width: ${responsive.sm}px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media screen and (max-width: 1024px) {
-    grid-auto-rows: 150px;
-  }
-
-  @media screen and (max-width: 800px) {
-    grid-auto-rows: 100px;
+  @media screen and (max-width: ${responsive.xs}px) {
+    grid-template-columns: 1fr;
   }
 `;

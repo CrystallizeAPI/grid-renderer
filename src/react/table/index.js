@@ -1,8 +1,9 @@
 import React from 'react';
-import { TableWrapper, Table, Tbody, Tr, Td } from './styles';
+import PropTypes from 'prop-types';
+import { TableWrapper, StyledTable, Tr } from './styles';
 import TableCell from './table-cell';
 
-export default ({
+const Table = ({
   cellComponent,
   children,
   renderContent,
@@ -13,7 +14,7 @@ export default ({
 
   return (
     <TableWrapper>
-      <Table>
+      <StyledTable>
         <tbody>
           {children
             ? children({ rows })
@@ -33,7 +34,17 @@ export default ({
                 );
               })}
         </tbody>
-      </Table>
+      </StyledTable>
     </TableWrapper>
   );
 };
+
+Table.propTypes = {
+  cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  children: PropTypes.func,
+  renderContent: PropTypes.func,
+  rows: PropTypes.arrayOf(PropTypes.object),
+  totalColSpan: PropTypes.number
+};
+
+export default Table;

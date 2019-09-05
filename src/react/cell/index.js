@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { CellWrapper, Img, ImageWrapper, ItemName } from './styles';
 
 const Cell = ({ cell, children }) => {
@@ -33,6 +34,11 @@ const Cell = ({ cell, children }) => {
       )}
     </CellWrapper>
   );
+};
+
+Cell.propTypes = {
+  cell: PropTypes.object,
+  children: PropTypes.any
 };
 
 export default Cell;
