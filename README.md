@@ -68,8 +68,7 @@ table cell, you can pass it through as a prop.
 
 ```js
 const MyCellComponent = ({ cell, children }) => {
-  // item (product, etc) and layout (colspan, rowspan) are passed through in
-  // the cell prop.
+  // item (product, etc) and layout (colspan, rowspan) are passed through in the cell prop.
   const { item, layout } = cell;
   return <div>{children}</div>;
 };
@@ -102,6 +101,19 @@ import Grid, { Cell } from '@crystallize/grid-renderer/react';
 
 const children = ({ cells }) => {
   return cells.map(cell => <Cell cell={cell} />);
+};
+
+return <Grid model={gridModel}>{children}</Grid>;
+```
+
+_Note:_ If using `<table>` the children will receive an array of `rows` instead
+of `cells`, such as the following:
+
+```js
+import Grid, { TableCell } from '@crystallize/grid-renderer/react';
+
+const children = ({ rows }) => {
+  return rows.map(row => rows.columns.map(cell => <TableCell cell={cell} />));
 };
 
 return <Grid model={gridModel}>{children}</Grid>;
