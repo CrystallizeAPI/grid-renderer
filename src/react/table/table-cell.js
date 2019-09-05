@@ -4,7 +4,7 @@ import Cell from '../cell';
 import { Td, TableCellWrapper } from './styles';
 
 const TableCell = ({ cell, children, totalColSpan }) => {
-  const { layout } = cell;
+  const layout = cell.layout || { colspan: 1, rowspan: 1 };
   return (
     <Td
       rowSpan={layout.rowspan}
