@@ -91,4 +91,20 @@ const renderContent = cell => {
 return <Grid model={gridModel} renderContent={renderContent} />;
 ```
 
+#### `children`
+
+If you want full control over each of the cells, you can instead supply a
+function as the children of the grid component. This will allow you to iterate
+over each of the cells and mutate them as you please.
+
+```js
+import Grid, { Cell } from '@crystallize/grid-renderer/react';
+
+const children = ({ cells }) => {
+  return cells.map(cell => <Cell cell={cell} />);
+};
+
+return <Grid model={gridModel}>{children}</Grid>;
+```
+
 [0]: https://crystallize.com/api

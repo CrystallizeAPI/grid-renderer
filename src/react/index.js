@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Grid from './grid';
 import Table from './table';
 
-export { default as Grid } from './grid';
-export { default as Table } from './table';
 export { default as Cell } from './cell';
 export { default as TableCell } from './table/table-cell';
 
