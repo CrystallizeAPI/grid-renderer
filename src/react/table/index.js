@@ -17,9 +17,11 @@ const Table = ({
     <TableWrapper {...props}>
       <StyledTable>
         <thead>
-          {new Array(totalColSpan).fill(0).map((v, i) => (
-            <th key={`th-${i}`} />
-          ))}
+          <tr>
+            {new Array(totalColSpan).fill(0).map((v, i) => (
+              <th key={`th-${i}`} />
+            ))}
+          </tr>
         </thead>
         <tbody>
           {children

@@ -4,18 +4,20 @@ exports[`Table renders correctly 1`] = `
 <styled.div>
   <styled.table>
     <thead>
-      <th
-        key="th-0"
-      />
-      <th
-        key="th-1"
-      />
-      <th
-        key="th-2"
-      />
-      <th
-        key="th-3"
-      />
+      <tr>
+        <th
+          key="th-0"
+        />
+        <th
+          key="th-1"
+        />
+        <th
+          key="th-2"
+        />
+        <th
+          key="th-3"
+        />
+      </tr>
     </thead>
     <tbody>
       <styled.tr
