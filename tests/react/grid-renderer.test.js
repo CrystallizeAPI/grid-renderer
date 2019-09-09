@@ -23,12 +23,12 @@ describe('GridRenderer', () => {
     );
   });
 
-  it('passes the `renderComponent` prop through correctly', () => {
+  it('passes the `renderCellContent` prop through correctly', () => {
     const mock = jest.fn();
     const wrapper = shallow(
-      <GridRenderer model={model} renderContent={mock} />
+      <GridRenderer model={model} renderCellContent={mock} />
     );
-    expect(wrapper.find('Grid').prop('renderContent')).toEqual(mock);
+    expect(wrapper.find('Grid').prop('renderCellContent')).toEqual(mock);
   });
 
   it('passes the children through correctly', () => {
@@ -36,5 +36,12 @@ describe('GridRenderer', () => {
     const mock = jest.fn();
     const wrapper = shallow(<GridRenderer model={model}>{mock}</GridRenderer>);
     expect(wrapper.find('Grid').prop('children')).toEqual(mock);
+  });
+
+  it('should allow custom props to be passed through to the grid component', () => {
+    const wrapper = shallow(
+      <GridRenderer className="my-custom-class" model={model} />
+    );
+    expect(wrapper.find('Grid').prop('className')).toEqual('my-custom-class');
   });
 });

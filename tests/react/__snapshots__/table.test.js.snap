@@ -20,6 +20,7 @@ exports[`Table renders correctly 1`] = `
             }
           }
           key="cell-0-0"
+          totalColSpan={4}
         />
         <TableCell
           cell={
@@ -34,6 +35,7 @@ exports[`Table renders correctly 1`] = `
             }
           }
           key="cell-0-1"
+          totalColSpan={4}
         />
       </styled.tr>
       <styled.tr
@@ -52,6 +54,7 @@ exports[`Table renders correctly 1`] = `
             }
           }
           key="cell-1-0"
+          totalColSpan={4}
         />
       </styled.tr>
     </tbody>

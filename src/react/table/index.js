@@ -6,14 +6,15 @@ import TableCell from './table-cell';
 const Table = ({
   cellComponent,
   children,
-  renderContent,
+  renderCellContent,
   rows,
-  totalColSpan
+  totalColSpan = 4,
+  ...props
 }) => {
   const CellComponent = cellComponent || TableCell;
 
   return (
-    <TableWrapper>
+    <TableWrapper {...props}>
       <StyledTable>
         <tbody>
           {children
@@ -27,7 +28,7 @@ const Table = ({
                         cell={col}
                         totalColSpan={totalColSpan}
                       >
-                        {renderContent && renderContent(col)}
+                        {renderCellContent && renderCellContent(col)}
                       </CellComponent>
                     ))}
                   </Tr>
@@ -42,7 +43,7 @@ const Table = ({
 Table.propTypes = {
   cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.func,
-  renderContent: PropTypes.func,
+  renderCellContent: PropTypes.func,
   rows: PropTypes.arrayOf(PropTypes.object),
   totalColSpan: PropTypes.number
 };

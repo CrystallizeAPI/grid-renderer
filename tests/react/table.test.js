@@ -29,15 +29,15 @@ describe('Table', () => {
     });
   });
 
-  describe('when the `renderContent` prop is given', () => {
+  describe('when the `renderCellContent` prop is given', () => {
     it('calls the prop as a function for each cell', () => {
-      const renderContent = jest.fn(cell => (
+      const renderCellContent = jest.fn(cell => (
         <CustomCellComponent cell={cell} />
       ));
       const wrapper = shallow(
-        <Table renderContent={renderContent} rows={rows} />
+        <Table renderCellContent={renderCellContent} rows={rows} />
       );
-      expect(renderContent.mock.calls).toHaveLength(3);
+      expect(renderCellContent.mock.calls).toHaveLength(3);
       expect(wrapper.find(CustomCellComponent)).toHaveLength(3);
     });
   });
