@@ -76,18 +76,18 @@ const MyCellComponent = ({ cell, children }) => {
 return <Grid model={gridModel} cellComponent={MyCellComponent} />;
 ```
 
-#### `renderContent`
+#### `renderCellContent`
 
 If you would like to change how the content within the cells is rendered, you
-can override it with the `renderContent` prop.
+can override it with the `renderCellContent` prop.
 
 ```js
-const renderContent = cell => {
+const renderCellContent = cell => {
   const { item } = cell;
   return <h1>{item.name}</h1>;
 };
 
-return <Grid model={gridModel} renderContent={renderContent} />;
+return <Grid model={gridModel} renderCellContent={renderCellContent} />;
 ```
 
 #### `children`
