@@ -4,11 +4,24 @@ import { CellWrapper, Img, ImageWrapper, ItemName } from './styles';
 
 const Cell = ({ cell, children }) => {
   const { item } = cell;
+  const layout = cell.layout || { colspan: 1, rowspan: 1 };
+
+  if (!item) {
+    return (
+      <CellWrapper
+        className="crystallize-grid-cell"
+        rowSpan={layout.rowspan}
+        colSpan={layout.colspan}
+      >
+        {children}
+      </CellWrapper>
+    );
+  }
+
   const defaultVariant = item.variants
     ? item.variants.find(variant => variant.isDefault)
     : null;
   const image = defaultVariant ? defaultVariant.image : null;
-  const layout = cell.layout || { colspan: 1, rowspan: 1 };
 
   return (
     <CellWrapper
