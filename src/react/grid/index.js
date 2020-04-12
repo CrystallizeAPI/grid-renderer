@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Cell from '../cell/cell';
-
 const Grid = ({
   cellComponent,
   cells,
@@ -10,7 +8,7 @@ const Grid = ({
   totalColSpan = 4,
   ...props
 }) => {
-  const CellComponent = cellComponent || Cell;
+  const CellComponent = cellComponent;
 
   return (
     <div

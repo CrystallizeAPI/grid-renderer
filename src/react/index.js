@@ -6,8 +6,6 @@ import Table from './table';
 
 export { default as Grid } from './grid';
 export { default as Table } from './table';
-export { default as Cell } from './cell';
-export { default as TableCell } from './table/table-cell';
 
 const getTotalGridDimensions = (rows) => {
   const totalColSpan = rows[0].columns.reduce(

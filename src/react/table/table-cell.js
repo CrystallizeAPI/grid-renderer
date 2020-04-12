@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Cell from '../cell/cell';
-
 const TableCell = ({ cell, children }) => {
   const layout = cell.layout || { colspan: 1, rowspan: 1 };
 
