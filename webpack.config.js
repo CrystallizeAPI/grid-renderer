@@ -1,12 +1,13 @@
 var path = require('path');
+
 module.exports = {
   entry: {
-    react: './src/react/index.js'
+    react: './src/react/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
@@ -17,13 +18,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/env']
-          }
-        }
-      }
-    ]
+            presets: ['@babel/env'],
+          },
+        },
+      },
+    ],
   },
   externals: {
-    react: 'commonjs react'
-  }
+    react: 'react',
+    'react-dom': 'reactDOM',
+    'styled-components': 'StyledComponents',
+  },
 };

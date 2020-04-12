@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TableWrapper, StyledTable, Tr } from './styles';
+
 import TableCell from './table-cell';
 
 const Table = ({
@@ -14,36 +14,30 @@ const Table = ({
   const CellComponent = cellComponent || TableCell;
 
   return (
-    <TableWrapper {...props}>
-      <StyledTable>
-        <thead>
-          <tr>
-            {new Array(totalColSpan).fill(0).map((v, i) => (
-              <th key={`th-${i}`} />
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {children
-            ? children({ rows })
-            : rows.map((row, i) => {
-                return (
-                  <Tr key={`row-${i}`}>
-                    {row.columns.map((col, j) => (
-                      <CellComponent
-                        key={`cell-${i}-${j}`}
-                        cell={col}
-                        totalColSpan={totalColSpan}
-                      >
-                        {renderCellContent && renderCellContent(col)}
-                      </CellComponent>
-                    ))}
-                  </Tr>
-                );
-              })}
-        </tbody>
-      </StyledTable>
-    </TableWrapper>
+    <table {...props}>
+      <thead>
+        <tr>
+          {new Array(totalColSpan).fill(0).map((v, i) => (
+            <th key={`th-${i}`} />
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {children
+          ? children({ rows })
+          : rows.map((row, i) => {
+              return (
+                <tr key={`row-${i}`}>
+                  {row.columns.map((col, j) => (
+                    <CellComponent key={`cell-${i}-${j}`} cell={col}>
+                      {renderCellContent && renderCellContent(col)}
+                    </CellComponent>
+                  ))}
+                </tr>
+              );
+            })}
+      </tbody>
+    </table>
   );
 };
 
@@ -52,7 +46,7 @@ Table.propTypes = {
   children: PropTypes.func,
   renderCellContent: PropTypes.func,
   rows: PropTypes.arrayOf(PropTypes.object),
-  totalColSpan: PropTypes.number
+  totalColSpan: PropTypes.number,
 };
 
 export default Table;

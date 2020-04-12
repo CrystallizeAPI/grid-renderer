@@ -1,28 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Cell from '../cell';
-import { CssGrid } from './styles';
+
+import Cell from '../cell/cell';
 
 const Grid = ({
   cellComponent,
   cells,
   children,
-  renderCellContent,
   totalColSpan = 4,
   ...props
 }) => {
   const CellComponent = cellComponent || Cell;
 
   return (
-    <CssGrid totalColSpan={totalColSpan} {...props}>
+    <div
+      style={{
+        display: 'grid',
+        'grid-template-columns': `repeat(${totalColSpan}, 1fr)`,
+      }}
+      {...props}
+    >
       {children
         ? children({ cells })
         : cells.map((cell, i) => (
-            <CellComponent key={`cell-${i}`} cell={cell}>
-              {renderCellContent && renderCellContent(cell)}
-            </CellComponent>
+            <CellComponent key={`cell-${i}`} cell={cell} />
           ))}
-    </CssGrid>
+    </div>
   );
 };
 
@@ -30,8 +33,7 @@ Grid.propTypes = {
   cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   cells: PropTypes.arrayOf(PropTypes.object).isRequired,
   children: PropTypes.func,
-  renderCellContent: PropTypes.func,
-  totalColSpan: PropTypes.number
+  totalColSpan: PropTypes.number,
 };
 
 export default Grid;

@@ -16,9 +16,7 @@
     "prepublish": "webpack",
     "test": "jest"
   },
-  "dependencies": {
-    "@crystallize/react-image": "^3.0.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -44,7 +42,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "styled-components": "^4.3.2"
   },
   "jest": {
     "setupFilesAfterEnv": [

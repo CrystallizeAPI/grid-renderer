@@ -49,7 +49,12 @@ Then, inside your component, render the `Grid`, passing through the grid model
 as a prop. By default, the grid is rendered using CSS grid.
 
 ```js
-return <Grid model={gridModel} />;
+return (
+  <Grid
+    model={gridModel}
+    cellComponent={({ cell }) => <div>{cell.item.name}</div>}
+  />
+);
 ```
 
 #### `type`
@@ -58,36 +63,13 @@ If you prefer to use a traditional `<table>` instead of CSS grid, you can do so
 easily:
 
 ```js
-return <Grid model={gridModel} type="table" />;
-```
-
-#### `cellComponent`
-
-If you would like to use a custom cell component instead of the default grid or
-table cell, you can pass it through as a prop.
-
-```js
-const MyCellComponent = ({ cell, children }) => {
-  // item (product, etc) and layout (colspan, rowspan) are passed through in the cell prop.
-  const { item, layout } = cell;
-  return <div>{children}</div>;
-};
-
-return <Grid model={gridModel} cellComponent={MyCellComponent} />;
-```
-
-#### `renderCellContent`
-
-If you would like to change how the content within the cells is rendered, you
-can override it with the `renderCellContent` prop.
-
-```js
-const renderCellContent = cell => {
-  const { item } = cell;
-  return <h1>{item.name}</h1>;
-};
-
-return <Grid model={gridModel} renderCellContent={renderCellContent} />;
+return (
+  <Grid
+    model={gridModel}
+    type="table"
+    cellComponent={({ cell }) => <div>{cell.item.name}</div>}
+  />
+);
 ```
 
 #### `children`
@@ -97,10 +79,19 @@ function as the children of the grid component. This will allow you to iterate
 over each of the cells and mutate them as you please.
 
 ```js
-import Grid, { Cell } from '@crystallize/grid-renderer/react';
+import Grid from '@crystallize/grid-renderer/react';
 
 const children = ({ cells }) => {
-  return cells.map(cell => <Cell cell={cell} />);
+  return cells.map((cell) => (
+    <div
+      style={{
+        'grid-column': `span ${layout.colSpan}`,
+        'grid-row': `span ${layout.rowSpan}`,
+      }}
+    >
+      {cell.item.name}
+    </div>
+  ));
 };
 
 return <Grid model={gridModel}>{children}</Grid>;
@@ -110,13 +101,25 @@ _Note:_ If using `<table>` the children will receive an array of `rows` instead
 of `cells`, such as the following:
 
 ```js
-import Grid, { TableCell } from '@crystallize/grid-renderer/react';
+import Grid from '@crystallize/grid-renderer/react';
 
 const children = ({ rows }) => {
-  return rows.map(row => rows.columns.map(cell => <TableCell cell={cell} />));
+  return rows.map((row) => (
+    <tr>
+      {rows.columns.map((cell) => (
+        <td rowSpan={cell.layout.rowspan} colSpan={cell.layout.colspan}>
+          {cell.item.name}
+        </td>
+      ))}
+    </tr>
+  ));
 };
 
-return <Grid model={gridModel}>{children}</Grid>;
+return (
+  <Grid model={gridModel} type="table">
+    {children}
+  </Grid>
+);
 ```
 
-[0]: https://crystallize.com/api
+[0]: https://crystallize.com/learn/user-guides/pim/grids
