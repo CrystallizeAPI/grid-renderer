@@ -23,7 +23,7 @@ const Grid = ({
       {children
         ? children({ cells })
         : cells.map((cell, i) => (
-            <GridCell key={`cell-${i}`}>
+            <GridCell key={`cell-${i}`} cell={cell}>
               <CellComponent cell={cell} />
             </GridCell>
           ))}
