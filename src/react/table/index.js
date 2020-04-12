@@ -29,9 +29,13 @@ const Table = ({
               return (
                 <tr key={`row-${i}`}>
                   {row.columns.map((col, j) => (
-                    <CellComponent key={`cell-${i}-${j}`} cell={col}>
-                      {renderCellContent && renderCellContent(col)}
-                    </CellComponent>
+                    <td
+                      key={`cell-${i}-${j}`}
+                      rowSpan={col.layout.rowspan}
+                      colSpan={col.layout.colspan}
+                    >
+                      <CellComponent cell={col} />
+                    </td>
                   ))}
                 </tr>
               );

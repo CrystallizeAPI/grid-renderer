@@ -16,16 +16,23 @@ const Grid = ({
     <div
       style={{
         display: 'grid',
-        'grid-template-columns': `repeat(${totalColSpan}, 1fr)`,
+        gridTemplateColumns: `repeat(${totalColSpan}, 1fr)`,
       }}
       {...props}
     >
       {children
         ? children({ cells })
         : cells.map((cell, i) => (
-            <GridCell key={`cell-${i}`} cell={cell}>
+            <div
+              key={`cell-${i}`}
+              className="crystallize-grid-cell"
+              style={{
+                gridColumn: `span ${cell.layout.colspan}`,
+                gridRow: `span ${cell.layout.rowspan}`,
+              }}
+            >
               <CellComponent cell={cell} />
-            </GridCell>
+            </div>
           ))}
     </div>
   );

@@ -11,6 +11,7 @@
     "url": "https://github.com/CrystallizeAPI/grid-renderer/issues"
   },
   "scripts": {
+    "dev:react": "NODE_ENV=development parcel ./public-react/index.html",
     "build": "webpack",
     "start": "webpack --watch",
     "prepublish": "webpack",
@@ -33,6 +34,7 @@
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "jest": "^24.9.0",
+    "parcel": "^1.12.4",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

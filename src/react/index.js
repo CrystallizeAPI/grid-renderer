@@ -20,10 +20,13 @@ const GridRenderer = ({
   cellComponent,
   children,
   model,
-  renderCellContent,
   type = 'grid',
   ...props
 }) => {
+  if (!cellComponent && !children) {
+    return null;
+  }
+
   const { rows } = model;
   if (!rows.length) return null;
 
@@ -33,9 +36,9 @@ const GridRenderer = ({
     return (
       <Table
         cellComponent={cellComponent}
-        renderCellContent={renderCellContent}
         rows={rows}
         totalColSpan={totalColSpan}
+        {...props}
       >
         {children}
       </Table>
@@ -52,7 +55,6 @@ const GridRenderer = ({
     <Grid
       cellComponent={cellComponent}
       cells={cells}
-      renderCellContent={renderCellContent}
       totalColSpan={totalColSpan}
       {...props}
     >
@@ -68,7 +70,6 @@ GridRenderer.propTypes = {
     PropTypes.object,
     PropTypes.arrayOf(PropTypes.object),
   ]).isRequired,
-  renderCellContent: PropTypes.func,
   type: PropTypes.string,
 };
 
