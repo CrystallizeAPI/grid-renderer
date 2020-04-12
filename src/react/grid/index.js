@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import GridCell from './grid-cell';
+
 const Grid = ({
   cellComponent,
   cells,
@@ -21,7 +23,9 @@ const Grid = ({
       {children
         ? children({ cells })
         : cells.map((cell, i) => (
-            <CellComponent key={`cell-${i}`} cell={cell} />
+            <GridCell key={`cell-${i}`}>
+              <CellComponent cell={cell} />
+            </GridCell>
           ))}
     </div>
   );
