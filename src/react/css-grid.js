@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GridCell from './grid-cell';
-
-const Grid = ({
+const CSSGrid = ({
   cellComponent,
   cells,
   children,
@@ -18,6 +16,7 @@ const Grid = ({
         display: 'grid',
         gridTemplateColumns: `repeat(${totalColSpan}, 1fr)`,
       }}
+      className="crystallize-grid crystallize-grid--css-grid"
       {...props}
     >
       {children
@@ -25,7 +24,7 @@ const Grid = ({
         : cells.map((cell, i) => (
             <div
               key={`cell-${i}`}
-              className="crystallize-grid-cell"
+              className="crystallize-grid__cell"
               style={{
                 gridColumn: `span ${cell.layout.colspan}`,
                 gridRow: `span ${cell.layout.rowspan}`,
@@ -38,11 +37,11 @@ const Grid = ({
   );
 };
 
-Grid.propTypes = {
+CSSGrid.propTypes = {
   cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   cells: PropTypes.arrayOf(PropTypes.object).isRequired,
   children: PropTypes.func,
   totalColSpan: PropTypes.number,
 };
 
-export default Grid;
+export default CSSGrid;

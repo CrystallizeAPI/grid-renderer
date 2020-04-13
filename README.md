@@ -14,7 +14,7 @@ yarn add @crystallize/grid-renderer
 ## Usage
 
 In order to use the grid renderer you'll need to have fetched your grid model.
-This can be fetched fairly easily from [Crystallize's API][0] via GraphQL.
+This can be fetched fairly easily from [Crystallize's API][1] via GraphQL.
 
 At the minimum you will need to fetch layout of each column and some properties
 on the item. Your query might look something like this:
@@ -39,14 +39,14 @@ query grid($id: Int!, $language: String!) {
 
 ### React
 
-Import the `Grid` from the react module:
+Import the `GridRenderer` from the react module:
 
 ```js
 import Grid from '@crystallize/grid-renderer/react';
 ```
 
 Then, inside your component, render the `Grid`, passing through the grid model
-as a prop. By default, the grid is rendered using CSS grid.
+as a prop. By default, the grid is rendered using [CSS grid][2].
 
 ```js
 return (
@@ -85,8 +85,8 @@ const children = ({ cells }) => {
   return cells.map((cell) => (
     <div
       style={{
-        'grid-column': `span ${layout.colSpan}`,
-        'grid-row': `span ${layout.rowSpan}`,
+        gridColumn: `span ${cell.layout.colspan}`,
+        gridRow: `span ${cell.layout.rowspan}`,
       }}
     >
       {cell.item.name}
@@ -106,7 +106,7 @@ import Grid from '@crystallize/grid-renderer/react';
 const children = ({ rows }) => {
   return rows.map((row) => (
     <tr>
-      {rows.columns.map((cell) => (
+      {row.columns.map((cell) => (
         <td rowSpan={cell.layout.rowspan} colSpan={cell.layout.colspan}>
           {cell.item.name}
         </td>
@@ -123,3 +123,6 @@ return (
 ```
 
 [0]: https://crystallize.com/learn/user-guides/pim/grids
+[1]:
+  https://crystallize.com/learn/developer-guides/catalogue-api/querying-the-catalogue
+[2]: https://developer.mozilla.org/en-US/docs/Web/CSS/grid

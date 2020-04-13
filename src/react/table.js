@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TableCell from './table-cell';
-
 const Table = ({
   cellComponent,
   children,
-  renderCellContent,
   rows,
   totalColSpan = 4,
   ...props
 }) => {
-  const CellComponent = cellComponent || TableCell;
+  const CellComponent = cellComponent;
 
   return (
-    <table {...props}>
+    <table className="crystallize-grid crystallize-grid--table" {...props}>
       <thead>
         <tr>
           {new Array(totalColSpan).fill(0).map((v, i) => (
@@ -31,6 +28,7 @@ const Table = ({
                   {row.columns.map((col, j) => (
                     <td
                       key={`cell-${i}-${j}`}
+                      className="crystallize-grid__cell"
                       rowSpan={col.layout.rowspan}
                       colSpan={col.layout.colspan}
                     >
@@ -48,7 +46,6 @@ const Table = ({
 Table.propTypes = {
   cellComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   children: PropTypes.func,
-  renderCellContent: PropTypes.func,
   rows: PropTypes.arrayOf(PropTypes.object),
   totalColSpan: PropTypes.number,
 };

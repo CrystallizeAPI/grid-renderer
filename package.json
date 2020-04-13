@@ -1,7 +1,7 @@
 {
   "name": "@crystallize/grid-renderer",
   "version": "2.0.0-beta.3",
-  "main": "dist/index.js",
+  "main": "dist/react.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
     "url": "https://github.com/CrystallizeAPI/grid-renderer/issues"
   },
   "scripts": {
-    "dev:react": "NODE_ENV=development parcel ./public-react/index.html",
+    "dev:react": "NODE_ENV=development parcel ./public-react/index.html --out-dir .dev-react/",
     "build": "webpack",
     "start": "webpack --watch",
     "prepublish": "webpack",

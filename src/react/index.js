@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Grid from './grid';
+import CSSGrid from './css-grid';
 import Table from './table';
 
-export { default as Grid } from './grid';
+export { default as CSSGrid } from './css-grid';
 export { default as Table } from './table';
 
 const getTotalGridDimensions = (rows) => {
@@ -24,6 +24,9 @@ const GridRenderer = ({
   ...props
 }) => {
   if (!cellComponent && !children) {
+    console.error(
+      '@crystallize/grid-renderer: missing ´cellComponent` or children function'
+    );
     return null;
   }
 
@@ -52,14 +55,14 @@ const GridRenderer = ({
   const cells = [].concat.apply([], columns);
 
   return (
-    <Grid
+    <CSSGrid
       cellComponent={cellComponent}
       cells={cells}
       totalColSpan={totalColSpan}
       {...props}
     >
       {children}
-    </Grid>
+    </CSSGrid>
   );
 };
 

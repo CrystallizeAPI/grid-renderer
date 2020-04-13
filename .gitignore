@@ -15,6 +15,7 @@
 .env.test.local
 .env.production.local
 .cache
+.dev-react
 
 npm-debug.log*
 yarn-debug.log*
