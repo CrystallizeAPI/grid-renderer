@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from './grid';
+
+import CSSGrid from './css-grid';
 import Table from './table';
 
-export { default as Grid } from './grid';
+export { default as CSSGrid } from './css-grid';
 export { default as Table } from './table';
-export { default as Cell } from './cell';
-export { default as TableCell } from './table/table-cell';
 
-const getTotalGridDimensions = rows => {
+const getTotalGridDimensions = (rows) => {
   const totalColSpan = rows[0].columns.reduce(
     (acc, col) => acc + col.layout.colspan,
     0
@@ -21,10 +20,16 @@ const GridRenderer = ({
   cellComponent,
   children,
   model,
-  renderCellContent,
   type = 'grid',
   ...props
 }) => {
+  if (!cellComponent && !children) {
+    console.error(
+      '@crystallize/grid-renderer: missing ´cellComponent` or children function'
+    );
+    return null;
+  }
+
   const { rows } = model;
   if (!rows.length) return null;
 
@@ -34,9 +39,9 @@ const GridRenderer = ({
     return (
       <Table
         cellComponent={cellComponent}
-        renderCellContent={renderCellContent}
         rows={rows}
         totalColSpan={totalColSpan}
+        {...props}
       >
         {children}
       </Table>
@@ -46,19 +51,18 @@ const GridRenderer = ({
   // Currently the data is only returned in a nested array of rows and
   // columns. To make use of CSS Grid we need a flat array of all of the
   // individual cells.
-  const columns = rows.map(row => row.columns);
+  const columns = rows.map((row) => row.columns);
   const cells = [].concat.apply([], columns);
 
   return (
-    <Grid
+    <CSSGrid
       cellComponent={cellComponent}
       cells={cells}
-      renderCellContent={renderCellContent}
       totalColSpan={totalColSpan}
       {...props}
     >
       {children}
-    </Grid>
+    </CSSGrid>
   );
 };
 
@@ -67,10 +71,9 @@ GridRenderer.propTypes = {
   children: PropTypes.func,
   model: PropTypes.oneOfType([
     PropTypes.object,
-    PropTypes.arrayOf(PropTypes.object)
+    PropTypes.arrayOf(PropTypes.object),
   ]).isRequired,
-  renderCellContent: PropTypes.func,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 export default GridRenderer;

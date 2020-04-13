@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GridRenderer renders a grid correctly 1`] = `
-<Grid
+<CSSGrid
+  cellComponent={[Function]}
   cells={
     Array [
       Object {
@@ -39,6 +40,7 @@ exports[`GridRenderer renders a grid correctly 1`] = `
 
 exports[`GridRenderer renders a table correctly 1`] = `
 <Table
+  cellComponent={[Function]}
   rows={
     Array [
       Object {

@@ -1,7 +1,7 @@
 {
   "name": "@crystallize/grid-renderer",
-  "version": "1.0.1",
-  "main": "dist/index.js",
+  "version": "2.0.0",
+  "main": "dist/react.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -11,14 +11,14 @@
     "url": "https://github.com/CrystallizeAPI/grid-renderer/issues"
   },
   "scripts": {
+    "dev:react": "NODE_ENV=development parcel ./public-react/index.html --out-dir .dev-react/",
     "build": "webpack",
     "start": "webpack --watch",
     "prepublish": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "release": "release-it"
   },
-  "dependencies": {
-    "@crystallize/react-image": "^3.0.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -34,17 +34,19 @@
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "jest": "^24.9.0",
+    "parcel": "^1.12.4",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-test-renderer": "^16.9.0",
-    "styled-components": "^4.3.2",
+    "release-it": "^13.5.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
