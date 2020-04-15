@@ -6,6 +6,7 @@ const CSSGrid = ({
   cells,
   children,
   totalColSpan = 4,
+  style,
   ...props
 }) => {
   const CellComponent = cellComponent;
@@ -15,6 +16,7 @@ const CSSGrid = ({
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${totalColSpan}, 1fr)`,
+        ...style,
       }}
       className="crystallize-grid crystallize-grid--css-grid"
       {...props}

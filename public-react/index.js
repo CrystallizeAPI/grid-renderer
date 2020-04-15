@@ -54,7 +54,11 @@ ReactDOM.render(
       Using <b>cellComponent</b>
     </h2>
     <h3>CSS Grid</h3>
-    <Module model={grid} cellComponent={cellComponent} />
+    <Module
+      model={grid}
+      cellComponent={cellComponent}
+      style={{ background: 'red' }}
+    />
     <h3>Table</h3>
     <Module
       model={grid}
