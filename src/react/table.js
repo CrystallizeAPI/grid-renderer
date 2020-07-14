@@ -21,7 +21,7 @@ const Table = ({
       </thead>
       <tbody>
         {children
-          ? children({ rows })
+          ? children({ rows, totalColSpan })
           : rows.map((row, i) => {
               return (
                 <tr key={`row-${i}`}>
@@ -32,7 +32,7 @@ const Table = ({
                       rowSpan={col.layout.rowspan}
                       colSpan={col.layout.colspan}
                     >
-                      <CellComponent cell={col} />
+                      <CellComponent cell={col} totalColSpan={totalColSpan} />
                     </td>
                   ))}
                 </tr>

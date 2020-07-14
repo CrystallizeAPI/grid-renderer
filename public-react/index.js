@@ -44,8 +44,12 @@ const grid = {
   ],
 };
 
-function cellComponent({ cell }) {
-  return <div>{cell.item.name}</div>;
+function cellComponent({ cell, totalColSpan }) {
+  return (
+    <div>
+      {cell.item.name} ({totalColSpan})
+    </div>
+  );
 }
 
 ReactDOM.render(
