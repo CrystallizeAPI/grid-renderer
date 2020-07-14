@@ -22,7 +22,7 @@ const CSSGrid = ({
       {...props}
     >
       {children
-        ? children({ cells })
+        ? children({ cells, totalColSpan })
         : cells.map((cell, i) => (
             <div
               key={`cell-${i}`}
@@ -32,7 +32,7 @@ const CSSGrid = ({
                 gridRow: `span ${cell.layout.rowspan}`,
               }}
             >
-              <CellComponent cell={cell} />
+              <CellComponent cell={cell} totalColSpan={totalColSpan} />
             </div>
           ))}
     </div>
